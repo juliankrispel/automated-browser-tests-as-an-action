@@ -1,0 +1,20 @@
+name: Main
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Install
+        uses: ianwalter/puppeteer@master # TODO: can I use a variable here?
+        with:
+          args: yarn
+      - name: Lint
+        uses: ianwalter/puppeteer@master
+        with:
+          args: yarn lint
+      - name: Test
+        uses: ianwalter/puppeteer@master
+        with:
+          args: yarn test
